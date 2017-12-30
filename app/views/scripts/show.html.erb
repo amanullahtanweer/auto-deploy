@@ -1,0 +1,12 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading">Script - <%= @script.name %></h2>
+  </div>
+  
+  <div class="code-label">~/.autodeploy/<%= @script.name %></div>
+  <pre><%= @script.body %></pre>
+  <div class="form-actions">
+    <%= link_to 'Back', scripts_path, { class: "btn btn-sm btn-primary", data: { keybinding: 'shift+b' }} %>
+    <%= link_to 'Edit', edit_script_path(@script), class: "btn btn-cancle btn-sm mr-2", data: { keybinding: 'shift+e' } %>
+  </div>
+</div>

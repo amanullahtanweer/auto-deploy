@@ -1,0 +1,43 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="top-area-heading"><%= plural_table_name.titleize %></h2>
+      </div>
+      <div class="col-lg-6">
+        <div class="nav-controls">
+          <%%= search_form_for @q, class: "top-area-form" do |f| %>
+              <div class="form-group">
+                <%%= f.search_field :id_eq, class: "form-control", placeholder: "Find by name...", autocomplete: "off", data: { keybinding: '/' } %>
+              </div>
+          <%% end %>
+          <%%= order_by_dropdown %>
+          <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path, class: "btn btn-success btn-sm", data: { keybinding: 'shift+n' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="<%%= standard_table_class %>">
+    <thead>
+    <tr>
+      <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <th><%%= sort_link(@q, :<%= attribute.name %>) %></th>
+      <% end -%>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+    <tr data-link="<%%= <%= singular_table_name %>_path(<%= singular_table_name %>) %>">
+      <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <td class="align-middle"><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+      <% end -%>
+      <td class="align-middle text-right"><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-primary btn-sm" %>
+      <%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+    </tr>
+    <%% end %>
+    </tbody>
+  </table>
+  <%%= paginate @<%= plural_table_name %>,theme: 'twitter-bootstrap-4' %>
+</div>

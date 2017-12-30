@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-lg-2 text-left pr-0">
+    <%= render "shared/admin_aside_menu" %>
+  </div>
+  <div class="col-lg-10">
+    <div class="content-with-asidemenu">
+      <div class="card-body">
+        <h3 class="card-title align-middle">
+          System Information
+        </h3>
+        <div class="card-text">
+          <div class="row">
+            <div class="col-sm-4">
+
+              <div class="card">
+                <h4 class="card-header">CPU</h4>
+                <div class="card-body">
+                  <div class="card-text">
+                    <% if @cpus %>
+                    <h1><%= "#{@cpus.length}"%> cores</h1>
+                    <% else %>
+                    Unable to collect CPU info
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card">
+                <h4 class="card-header">Memory</h4>
+                <div class="card-body">
+                  <div class="card-text">
+                    <% if @memory %>
+                    <h1><%= "#{number_to_human_size(@memory.active_bytes)} / #{number_to_human_size(@memory.total_bytes)}" %></h1>
+                    <% else %>
+                    Unable to collect memory info
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card">
+                <h4 class="card-header">Disks</h4>
+                <div class="card-body">
+                  <div class="card-text">
+                    <% @disks.each do |disk| %>
+                    <h1><%= "#{number_to_human_size(disk[:bytes_used])} / #{number_to_human_size(disk[:bytes_total])}" %> </h1>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

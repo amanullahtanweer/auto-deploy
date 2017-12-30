@@ -1,0 +1,20 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading"><%= singular_table_name.titleize %></h2>
+  </div>
+  <table class="<%%= standard_table_class %> table-bordered max-with-table table-sm">
+    <tbody>
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <tr>
+      <td width="20%"><strong><%= attribute.human_name %>:</strong></td>
+      <td width="80%"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
+    </tr>
+    <% end -%>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <%%= link_to 'Back', <%= index_helper %>_path, { class: "btn btn-sm btn-primary", data: { keybinding: 'shift+b' }} %>
+    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-cancle btn-sm mr-2", data: { keybinding: 'shift+e' } %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="top-area-heading">Servers</h2>
+      </div>
+      <div class="col-lg-6">
+        <div class="nav-controls">
+          <%= search_form_for @q, class: "top-area-form" do |f| %>
+          <div class="form-group">
+            <%= f.search_field :id_eq, class: "form-control", placeholder: "Find by name...", autocomplete: "off", data: { keybinding: '/' } %>
+          </div>
+          <% end %>
+          <%= order_by_dropdown %>
+          <%= link_to 'New Server', new_server_path, class: "btn btn-success btn-sm", data: { keybinding: 'shift+n' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="<%= standard_table_class %>">
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :public_ip) %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @servers.each do |server| %>
+      <tr>
+        <td data-link="<%= server_path(server) %>" class="align-middle"><%= server.name %></td>
+        <td data-link="<%= server_path(server) %>" class="align-middle"><%= server.public_ip %></td>
+        <td class="align-middle text-right"><%= link_to 'Edit', edit_server_path(server), class: "btn btn-primary btn-sm" %>
+          <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @servers,theme: 'twitter-bootstrap-4' %>
+  </div>

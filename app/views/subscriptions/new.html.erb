@@ -1,0 +1,34 @@
+
+<div class="col-sm-7 ml-auto mr-auto">
+	<h1 class="text-center">Subscribe to Intellecta</h1>	
+	<br/>
+	<div class="card">
+		<div class="card-content card-body panel-padded">
+			<div class="text-center">Your are subscribing to the <strong>Intellecta plan</strong>.</div>
+
+			<p class="text-muted text-center"><small>You will be charged $19 USD each month and you can cancel any time.</small></p>
+
+			<%= form_tag subscription_path, id: "payment-form" do %>
+			
+			<div class="form-row">
+				<label for="card-element">
+					Credit or debit card
+				</label>
+				<div id="card-element">
+					<!-- a Stripe Element will be inserted here. -->
+				</div>
+
+				<!-- Used to display form errors -->
+				<div id="card-errors" role="alert" class="text-danger"></div>
+			</div>
+			<input type="hidden" name= "plan_id" value="<%= params[:plan_id] %>">
+			<br/>
+			<div class="form-row">
+			<button type="submit" class="btn btn-success btn-block">Make payment</button>
+			</div>
+			<% end %>
+
+		</div>
+	</div>
+	<br/>
+</div>

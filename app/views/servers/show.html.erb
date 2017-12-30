@@ -1,0 +1,25 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading">Server - <%= @server.public_ip %></h2>
+  </div>
+  
+  <%= render "shared/tab-list" %>
+  <hr>
+  <% unless @server.is_active? %>
+  <p>Add the following SSH key to your <strong>root</strong> user's <code>/root/.ssh/authorized_keys</code> file:</p>
+  <div class="code-label">/root/.ssh/authorized_keys</div>
+  <pre>mkdir -p /root/.ssh/; echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRXtByFkOeOIuyaxUfIsvJ2YKXEOERZdpb0o8tztfJK5Jo1Apf3+FNRBzY13R1jWg7yLbClBG37hl10rq29hT1uaMqMO1ItLRyptTCHdLdnZS6fGBlDyuLIUYVEgtMWeuTimGB5M669HTSkrmVkquHRqHj3PQIMcsT/d86ncCtKN7QFV40tfZvBIo31UZdAEhPpnvGlIIr0sOY02Z1rtHILJ0MMRwsCGWuEn5sTad+H6OrS8YV7Vzadh5ZofAYQAYoPcCwdhFilyC0i/KbA4fUAKdld6x5eJ+5qhqJKk2mAFFFIxn8SRda3Hcan7M8o37pY5/mCPChGgnUVFvA1WHF [Auto Deploy] <%= @server.name%>" &gt;&gt; /root/.ssh/authorized_keys; chmod 600 /root/.ssh/authorized_keys;</pre>
+  
+  <div id="start" style=" display: none">
+    <div class="code-label">Deploy Status..</div>  
+    <pre style="overflow: auto; max-height: 400px;" id="message" data-behavior="server-logs" data-record="<%= @server.id %>" data-server-id="<%= @server.id %>"></pre>
+  </div>
+  
+    <div class="co-lg-12 pull-right text-right testbtn">
+      <a href="<%= server_retry_path(@server) %>" class="btn btn-primary btn-sm">Test Connection</a>
+    </div>
+  <% else %>
+    <p>Server is active</p>
+  <% end %>
+
+</div>

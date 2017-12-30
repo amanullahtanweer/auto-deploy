@@ -1,0 +1,344 @@
+$primary_theme_color: #0747A6;
+$main_font_size: 14px;
+$main_heading_size: 26px;
+
+body {
+    background-color: #FFF;
+    color: #172B4D;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42857142857143;
+    letter-spacing: -.005em;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    text-decoration-skip: ink;
+    
+
+}
+.devise-controller {
+	background-color: $primary_theme_color
+}
+
+.devise-controller form {
+		background: #fff;
+    padding: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.login-container {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 40px 0px 40px 0px;
+}
+
+pre>code {
+    border-radius: 3px;
+    display: block;
+    line-height: 18px;
+    margin-left: 10px;
+    overflow-y: hidden;
+    padding: 6px 10px
+}
+
+textarea {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px;
+    line-height: 1.29230769;
+    overflow: auto;
+    font-family: Arial,sans-serif;
+    font-size: 13px;
+    resize: vertical
+}
+
+img {
+    border: none
+}
+
+img:-moz-broken {
+    -moz-force-broken-image-icon: 1
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-bottom: 1px solid #ccc
+}
+
+
+// Theme css
+.be-wrapper {
+    min-height: 100%;
+    padding-top: 54px;
+}
+
+
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+  background-color: #f4f5f7;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+  padding: 2px 15px 2px 15px;
+}
+
+.asidemenu .nav-item {
+	width: 100%;
+  padding: 2px 0px 2px 0px;
+}
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.asidemenu {
+    padding-top: 1.25rem;
+}
+
+.sidebar .nav-link {
+  border-radius: 3px;
+}
+.asidemenu .nav-link {
+	border-radius: 0px !important;
+	padding: 5px 5px 5px 10px;
+}
+.asidemenu .nav-link.active, .asidemenu .nav-link.active a {
+	background-color: transparent !important;
+	font-weight: bold;
+	color: #000 !important
+}
+.nav-link .icon {
+  float: left;
+  font-size: 19px;
+  padding-right: 5px;
+}
+.sidebar a {
+	color: #42527A;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+	background-color: rgba(9, 30, 66, 0.04);
+	color: #0052CC
+}
+.nav-pills .nav-link:hover {
+	background-color: rgba(9, 30, 66, 0.04);
+}
+
+.dropdown-menu {
+	font-size: 14px;
+}
+
+.icon-menu {
+	font-size: 14px;
+  float: left;
+  padding-right: 5px;
+  line-height: 20px;
+}
+
+.bg-theme {
+	background-color: $primary_theme_color !important
+}
+.btn-primary {
+  background-color: $primary_theme_color;
+  border-color: darken($primary_theme_color, 5%);
+}
+
+.page-item.active .page-link {
+  background-color: $primary_theme_color;
+  border-color: darken($primary_theme_color, 5%);
+}
+.page-link {
+	color: $primary_theme_color
+}
+
+td .btn {
+    padding: 0.12rem 0.5rem;
+    font-size: 12px;
+}
+
+a {
+	color: #1a64d0;
+}
+
+.form-control {
+	font-size: 13px;
+  line-height: 18px;
+  border-radius: 2px;
+}
+.navbar-brand {
+	-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.nav-controls .form-group {
+  margin-bottom: 0px;
+}
+.content-with-asidemenu {
+	height: calc(100vh - 80px);
+	border-left: 1px solid #f4f4f4
+}
+
+.material-icons {
+	font-size: 21px;
+}
+
+.paragraph-icon {
+    font-size: 16px;
+    vertical-align: text-bottom;
+}
+
+h1 {
+	font-size: $main_heading_size
+}
+h2 {
+	font-size: ($main_heading_size - 4)
+}
+h3 {
+	font-size: ($main_heading_size - 7)
+}
+h4 {
+	font-size: ($main_heading_size - 9)
+}
+h5 {
+	font-size: ($main_heading_size - 10)
+}
+h6 {
+	font-size: ($main_heading_size - 12)
+}
+
+table.table tr th, .file-holder table tr th, .wiki table tr th, .md table tr th, ul.notes>li .note-body .note-text table tr th {
+    background-color: #fafafa;
+    font-weight: 400;
+    border-bottom: none;
+}
+table tr:hover td {
+    background-color: #f6fafe;
+    border-top: 1px solid #b8d6f4;
+    border-bottom: 1px solid #b8d6f4;
+    cursor: pointer;
+}
+
+.search_fields_box {
+	display:none
+}
+.display-force {
+	display: block !important
+}
+
+.has-error {
+    color: #d40303;
+}
+
+.main-title {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ced4da;
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    margin-top: 30px;
+    margin-bottom: -16px;
+    padding: 16px;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+.form-control:focus, .common-note-form .md-area.is-focused, .search form:focus, .search.search-active form {
+    border-color: #73afea;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(115, 175, 234, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(115, 175, 234, 0.6);
+}
+
+.btn-cancle {
+  background-color: #fff;
+  border-color: #e5e5e5;
+  float:right;
+}
+
+.nav-controls .dropdown {
+  display: inline-block;
+  margin-right: 10px;
+}
+.top-area {
+  padding : 15px 0px;
+}
+.top-area .nav-controls {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    padding: 11px 0px;
+}
+.top-area-form {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.btn:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.top-area-heading {
+  display: inline-block;
+  padding: 11px 0px;
+}
+
+tr th a {
+    color: #484848;
+    font-weight: bold;
+}
+.max-with-table {
+    max-width: 60%;
+}
+
+.notification-container {
+}
+
+.alert li {
+    list-style-type: none;
+}
+.notification-container .alert {
+  margin-bottom: 0px;
+}
+
+.main-content {
+    padding: 20px;
+    margin: 20px;
+    background: #fff;
+}
+body {
+    background-color: #dedede;
+}
+.top-area {
+    padding: 0px 0px;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 20px;
+}
+h2.top-area-heading {
+    padding-top: 0px;
+}

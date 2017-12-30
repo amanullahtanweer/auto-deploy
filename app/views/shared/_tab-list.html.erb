@@ -1,0 +1,31 @@
+<ul class="nav nav-pills mb-3" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link <%= active_class(server_path(@server)) %>" href="<%= server_path(@server) %>">Status</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link <%= active_class(server_apps_path(@server)) %>" href="<%= server_apps_path(@server) %>">Applications</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/servers/1/logs">Logs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/servers/1/nginx_logs">Nginx</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link " href="/servers/1/ssh_keys">SSH Keys</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/servers/1/ruby">Ruby Versions</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link " href="/servers/1/postgres">PostgreSQL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link <%= active_class(server_memberships_path(@server)) %>" href="<%= server_memberships_path(@server) %>">Collaborators</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/servers/1/edit">Settings</a>
+  </li>
+</ul>

@@ -1,0 +1,21 @@
+<table class="<%= standard_table_class %>">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Started</th>
+            <th>Completed</th>
+            <th>View</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @logs.each do |log| %>
+        <tr data-link="<%= log_path(log) %>">
+            <td class="align-middle"><%= server.name %></td>
+            <td class="align-middle"><%= server.public_ip %></td>
+            <td class="align-middle text-right"><%= link_to 'Edit', edit_server_path(server), class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+          </tr>
+          <% end %>
+      </tbody>
+  </table>

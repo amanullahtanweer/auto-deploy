@@ -1,0 +1,40 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="top-area-heading">Scripts</h2>
+      </div>
+      <div class="col-lg-6">
+        <div class="nav-controls">
+          <%= search_form_for @q, class: "top-area-form" do |f| %>
+          <div class="form-group">
+            <%= f.search_field :id_eq, class: "form-control", placeholder: "Find by name...", autocomplete: "off", data: { keybinding: '/' } %>
+          </div>
+          <% end %>
+          <%= order_by_dropdown %>
+          <%= link_to 'New Script', new_script_path, class: "btn btn-success btn-sm", data: { keybinding: 'shift+n' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="<%= standard_table_class %>">
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :created_at) %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @scripts.each do |script| %>
+      <tr">
+        <td data-link="<%= script_path(script) %> class="align-middle"><%= script.name %></td>
+        <td data-link="<%= script_path(script) %> class="align-middle"><%= script.created_at %></td>
+        <td class="align-middle text-right"><%= link_to 'Edit', edit_script_path(script), class: "btn btn-primary btn-sm" %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @scripts,theme: 'twitter-bootstrap-4' %>
+  </div>

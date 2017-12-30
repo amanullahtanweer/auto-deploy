@@ -1,0 +1,66 @@
+<div class="row">
+  <%= content_tag :div, nil, class: admin_aside_left_class.split do %>
+  <%= render "shared/admin_aside_menu" %>
+  <% end %>
+  <%= content_tag :div, nil, class: admin_aside_right_class.split do %>
+  <div class=" content-with-asidemenu">
+    <div class="card-body">
+      <h3 class="card-title align-middle">
+        Users
+      </h3>
+      <div class="card-text">
+        <p>List of all the users present in database</p>
+
+        <div class="card bg-light border-light mb-3 search_fields_box <%= filter_params_present%>">
+          <div class="card-body">
+            <h4 class="card-title">Search Filters</h4>
+              <%= search_form_for [:admin, @q], class: "form-inline" do |f| %>
+                <div class="form-group">
+                  <%= f.search_field :id_eq, class: "form-control", placeholder: "ID" %>
+                </div>
+                <div class="form-group mx-sm-3">
+                  <%= f.search_field :email_cont, class: "form-control", placeholder: "Email" %>
+                </div>
+                <button type="submit" class="btn btn-success btn-sm mx-sm-1">Search</button>
+                <button type="button" id="reset" method="get" data-path="<%=request.path %>" class="btn btn-sm btn-danger btn-fill pull-right">Clear</button>
+              <% end %>
+          </div>
+        </div>
+
+        <p>
+          <%= filter_button %>
+          <%= link_to 'New User', new_admin_user_path, class: "btn btn-success btn-sm " %>    
+        </p>
+        <table class="<%= standard_table_class %>">
+          <thead>
+            <tr>
+              <th><%= sort_link(@q, :id) %></th>
+              <th><%= sort_link(@q, :email) %></th>
+              <th>Roles</th>
+              <th><%= sort_link(@q, :created_at) %></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td class="align-middle"><%= user.id %></td>
+              <td class="align-middle"><%= user.email %></td>
+              <td class="align-middle"><%= user.roles.map{ |role| "<span class='badge badge-pill badge-success'>#{role.name.capitalize}</span>"}.join(',').html_safe %></td>
+              <td class="align-middle"><%= formatted_date(user.created_at) %></td>
+              <td class="align-middle text-right">
+                <%= link_to 'Show', admin_user_path(user), class: "btn btn-info btn-sm" %>
+                <%= link_to 'Edit', edit_admin_user_path(user), class: "btn btn-primary btn-sm" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @users,theme: 'twitter-bootstrap-4' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+

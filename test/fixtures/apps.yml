@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server: one
+  name: MyString
+  repo_url: MyString
+  branch: MyString
+  domain: MyString
+
+two:
+  server: two
+  name: MyString
+  repo_url: MyString
+  branch: MyString
+  domain: MyString

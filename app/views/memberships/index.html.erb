@@ -1,0 +1,29 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading">Apps - <%= @server.public_ip %></h2>
+  </div>
+  
+  <%= render "shared/tab-list" %>
+  <hr>
+
+    <table  class="<%= standard_table_class %>">
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>Role</th>
+					<th class="text-right"></th>
+				</tr>
+			</thead>
+			<%= render 'member', member: @server.owner, owner: true %>
+			<%= render partial: 'member', collection: @members %>
+		</table>
+
+		<% if @users.any? %>
+			<%= form_tag server_memberships_path(@server), class: "form-inline mt-5" do %>
+				<%= select_tag :user_id, options_for_select(@users.collect { |f| [f.email, f.id] }), class: 'form-control mb-2 mr-sm-2 mb-sm-0' %>
+				<%= select_tag :role, options_for_select(Membership.roles.collect { |k, v| [k.capitalize, k] }), class: 'form-control mb-2 mr-sm-2 mb-sm-0' %>
+				<%= submit_tag 'Add', class: 'btn btn-primary' %>
+			<% end %>
+		<% end %>
+</div>
+

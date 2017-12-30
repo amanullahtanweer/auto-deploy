@@ -1,0 +1,35 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading">Apps - <%= @server.public_ip %></h2>
+  </div>
+  
+  <%= render "shared/tab-list" %>
+  <hr>
+  <div class="co-lg-12 pull-right text-right testbtn">
+      <a href="<%= new_server_app_path(@server) %>" class="btn btn-success btn-sm">New Application</a>
+    </div>
+    <br/>
+  <table class="<%= standard_table_class %>">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Repo</th>
+        <th>View</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @apps.each do |app| %>
+      <tr>
+        <td data-link="<%= server_app_path(@server,app) %>" class="align-middle"><%= app.name %></td>
+        <td data-link="<%= server_app_path(@server,app) %>" class="align-middle"><%= app.repo_url %></td>
+        <td class="align-middle text-right">
+          <%= link_to 'Edit', edit_server_app_path(@server,app), class: "btn btn-primary btn-sm" %>
+          <%= link_to 'Destroy', server_app_path(@server,app), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

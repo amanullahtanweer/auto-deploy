@@ -1,0 +1,36 @@
+<div class="text-left">
+	<div class="row">
+		<div class="col-lg-9">
+			<h1>Choose your subscription plan!</h1>
+		</div>
+		<div class="col-lg-3 text-right">
+		</div>
+	</div>
+	<p>What You Get By Subscribing</p>
+</div>
+
+<hr>
+
+
+<div class="row">
+	<% @plans.each do | plan | %>
+		<div class="col-lg-4 ml-auto">
+			<div class="card">
+				<div class="card-header">
+					<%= plan[:name] %> 
+				</div>
+				<div class="card-body">
+					<div class="price display-3">
+						<sup>$</sup>
+						<span><%= plan[:amount] / 100 %></span>
+						<small> / mo</small>
+					</div>
+				</div>
+				<div class="card-footer">
+					<a href="subscription/new?plan_id=<%= plan[:id] %>" class="btn btn-success btn-block btn-md">Subscribe Now</a>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+

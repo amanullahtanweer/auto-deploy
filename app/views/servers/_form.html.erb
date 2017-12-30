@@ -1,0 +1,13 @@
+<%= simple_form_for(@server) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :public_ip %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, {class: "btn btn-sm btn-primary", data: { keybinding: 'shift+s'}} %>
+    <%= link_to 'Back', servers_path, { class: "btn btn-sm btn-light btn-cancle", data: { keybinding: 'shift+b' }} %>
+  </div>
+<% end %>

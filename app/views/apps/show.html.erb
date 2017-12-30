@@ -1,0 +1,56 @@
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading">Apps - <%= @server.public_ip %></h2>
+  </div>
+  
+  <%= render "shared/tab-list" %>
+  <hr>
+  <div class="row">
+    <div class="col-lg-6 text-left">
+      <input type="text" class="form-control" value="<%= @app.repo_url %>" disabled="true">
+    </div>
+    <div class="col-lg-2 text-left">
+      <input type="text" class="form-control" value="<%= @app.branch %>" disabled="true">
+    </div>
+    <div class="col-lg-4 pull-right text-right testbtn">
+      <a href="<%= edit_server_app_path(@server,@app)%>" class="btn btn-warning btn-sm">Edit App</a>
+      <a href="<%= server_app_deploy_path(@server,@app)%>" class="btn btn-success btn-sm">Deploy Application</a>
+    </div>
+  </div>
+  <br/>
+  <div id="start">
+    <div class="code-label">~/<%= @app.name %></div>  
+    <pre style="overflow: auto; max-height: 400px;" id="message" data-behavior="app-logs" data-record="<%= @app.id %>" data-app-id="<%= @app.id %>"><i class="material-icons icon paragraph-icon">autorenew</i> Waiting for connection...!<br/></pre>
+  </div>
+  
+  <% if @app.env_vars %>
+  <br/>
+  <h3>Enviroment Variables</h3>
+  <table class="table">
+    <tr>
+      <td>DATABSE_URL</td>
+      <td><%= @app.env_vars['DBATABASE_URL'] %></td>
+    </tr>
+    <tr>
+      <td>RAILS_ENV</td>
+      <td>production</td>
+    </tr>
+  </table>
+  <br/>
+  <% end %>
+
+  <br/>
+  <h3>Webhook</h3>
+  <br/>
+  <div class="code-label">Deploy Webhook</div>
+  <pre style="overflow: none"><%= request.base_url%>/webhook/<%= @app.webhook %><br/></pre>
+  
+
+  <div class="row">
+    <div class="col-lg-12 pull-right text-right testbtn">
+      <a href="<%= server_app_rails_logs_path(@server,@app)%>" class="btn btn-primary btn-sm">Application Logs</a>
+      <a href="//<%= @app.domain %>" target="_blank" class="btn btn-default btn-sm">Preview App</a>
+    </div>
+  </div>
+  
+</div>

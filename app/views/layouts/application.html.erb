@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'https://js.stripe.com/v2/','https://js.stripe.com/v3/' ,'data-turbolinks-track' => true %>
+
+		<%= csrf_meta_tags %>
+
+		<%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC %>
+
+</head>
+
+<body>
+	<div class="be-wrapper be-fixed-sidebar">
+		<div class="container-fluid">
+			<div class="row">
+				<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light ps-container sidebar">
+					<%= render "shared/side-nav" %>
+				</nav>
+				<div class="col-sm-9">
+					<header>
+						<%= render "shared/top-nav" %>
+					</header>
+				</div>
+				<main role="main" class="col-sm-9 ml-sm-auto col-md-10">
+					<div class="container">
+						<div class="main-content">
+							<% if flash.present? %>
+							<div class="notification-container">
+								<div class="alert alert-primary" role="alert">
+									<% flash.each do |key, value| %>
+									<li><%= value %></li>
+									<% end %>
+								</div>
+							</div>
+							<% end %>
+							<%= yield %>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

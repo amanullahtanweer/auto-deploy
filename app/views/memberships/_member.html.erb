@@ -1,0 +1,22 @@
+<tr>
+	<td>
+		<%= member.email %>
+	</td>
+	<td>	
+		<% if defined?(owner) && owner %>
+			<span class="badge badge-primary badge-pill">
+				owner
+			</span>
+		<% else %>
+			<span class="badge badge-warning badge-pill">
+				<%= Membership.roles.key(member.role) %>
+			</span>
+	</td>
+	<td class="text-right">
+		<%= link_to server_membership_path(@server, member), class: 'pull-right text-right', method: :delete do %>
+			<i class="material-icons icon">delete_sweep</i>		
+		<% end %>
+	</td>
+<% end %>
+</tr>
+

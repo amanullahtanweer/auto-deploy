@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-theme bg-dark">
+	<a class="navbar-brand" href="/">
+		<img src="https://intellecta.services/assets/favicon-eec12ad7c32cc52fe8ef0af497fad15ae8e51877f8593b24e7d900cec0b5df3c.png" alt="" width="30" class="d-inline-block align-top" > Intellecta
+	</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<% unless current_user_subscribed? %>
+						<a href="/pricing" class="nav-link" style="color: yellow">Subscribe</a>
+					<% end %>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<%= image_tag avatar_url(current_user), class: "rounded"%> My Account
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="/users/edit">Account Settings</a>
+						<div class="dropdown-divider"></div>
+						<%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
+					</div>
+				</li>
+				<% if user_signed_in? %>
+					<li class="nav-item">
+						<%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+</nav>

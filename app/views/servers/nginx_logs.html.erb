@@ -1,0 +1,33 @@
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/ocean.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+  $(document).ready(function() {
+  $('pre').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+
+</script>
+<div class="main-content-full">
+  <div class="top-area">
+    <h2 class="top-area-heading">Server - <%= @server.public_ip %></h2>
+  </div>
+  
+  <%= render "shared/tab-list" %>
+  <hr>
+  
+  <div id="start">
+    <div class="code-label">Deploy Status..</div>  
+    <pre style="overflow: auto; max-height: 400px;" class="accesslog">
+      <%
+Net::SSH.start(@server.public_ip, 'root', :timeout => 10, :number_of_password_prompts => 0) do | ssh |
+@logs = ssh.exec!("less /var/log/nginx/access.log")
+end
+%>
+<%= @logs %>
+    </pre>
+  </div>
+  
+
+</div>
